@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+.idcard{
+  width: 40rem;
+  height: 20rem;
+}
+.banner{
+  width: 20rem;
+  height: 8rem;
+}
+.Chart{
+  width: 60rem;
+  height: 32rem;
+}

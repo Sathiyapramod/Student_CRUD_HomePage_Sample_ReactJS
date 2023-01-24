@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import { Navbar } from './Navbar';
+import {Routes, Route, Navigate} from 'react-router-dom';
+import { ListofStudents } from './ListofStudents';
+import { studentList } from './Lists';
+import { Home } from './Home';
+import { EditList } from './EditList';
+import { Utilities } from './Utilities';
+import { ViewUser } from './ViewUser';
+import { useState } from 'react';
+import { PageNotFound } from './PageNotFound';
+import { Dashboard } from './Components/Dashboard';
+import Trial from './Trial';
 
 function App() {
+  const [final,setFinal] = useState(studentList);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/students" element={<ListofStudents />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/trial" element={<Trial />} />
+        <Route path="/edit" element={<EditList />} />
+        <Route path="/utilities" element={<Utilities />} />
+        <Route path="/view-user/:id" element={<ViewUser final={final} setFinal={setFinal}/>} />
+        <Route path="/404" element={<PageNotFound />} />
+        <Route path="/*" element={<Navigate replace to ="/404" />}/>
+      </Routes>
     </div>
   );
 }
